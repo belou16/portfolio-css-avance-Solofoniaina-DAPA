@@ -1,0 +1,208 @@
+// Variables
+$primary-bg: #f0f0f0;
+$white: white;
+$black: black;
+$hover-white: #e0e0e0;
+$hover-black: #333;
+$yellow: yellow;
+$green: #4caf50;
+$blue: #0ff;
+
+// Body
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $primary-bg;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+// Vidéo en arrière-plan
+#backgroundVideo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+
+// Piano container
+.piano-container {
+  position: relative;
+  width: 480px;
+  height: 200px;
+}
+
+// Piano
+.piano {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+// Key styles
+.key {
+  border: 1px solid #000;
+  transition: background 0.1s;
+
+  &.white {
+    width: 60px;
+    background: $white;
+    position: relative;
+    z-index: 1;
+    height: 300px;
+
+    &:hover {
+      background: $hover-white;
+    }
+  }
+
+  &.black {
+    width: 40px;
+    background: $black;
+    position: absolute;
+    z-index: 2;
+    height: 160px;
+
+    &:hover {
+      background: $hover-black;
+    }
+  }
+}
+
+// Vertical text
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  font-size: 14px;
+  color: $black;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  white-space: nowrap;
+}
+
+// Positionnement des touches noires
+.key {
+  &.black {
+    &[data-note="C#"] {
+      left: 40px;
+    }
+
+    &[data-note="D#"] {
+      left: 100px;
+    }
+
+    &[data-note="F#"] {
+      left: 220px;
+    }
+
+    &[data-note="G#"] {
+      left: 280px;
+    }
+
+    &[data-note="A#"] {
+      left: 340px;
+    }
+  }
+}
+
+// switch du toggle button
+.toggle-switch {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.switch {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.4s;
+  border: 3px solid $yellow;
+
+  &::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background: $white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: left 0.4s, background 0.4s;
+  }
+
+  #powerToggle:checked + & {
+    background: $green;
+
+    &::after {
+      left: 33px;
+      background: $white;
+    }
+  }
+}
+
+#powerToggle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+// etat du piano éteint
+.piano.off {
+  .vertical-text {
+    display: none;
+  }
+
+  .key {
+    pointer-events: none;
+  }
+}
+
+.intro-text-container {
+  text-shadow: 0 0 10px $blue, 0 0 20px $blue, 0 0 40px $blue;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $white;
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+// animation du curseur
+.cursor {
+  display: inline-block;
+  margin-left: 5px;
+  animation: blink 1s infinite;
+  color: $white;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
