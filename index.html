@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piano de Chargement</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="toggle-switch">
+      <input type="checkbox" id="powerToggle" />
+      <label for="powerToggle" class="switch"></label>
+    </div>
+
+    <video autoplay loop muted id="backgroundVideo">
+      <source src="./assets/videos/background_portfolio.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas les vidéos.
+    </video>
+    <div class="intro-text-container">
+      <span id="introText"></span><span class="cursor">|</span>
+    </div>
+
+    <div class="piano-container">
+      <div class="piano">
+        <div class="key white" class="key" data-note="C">
+          <span class="vertical-text">Hero</span>
+        </div>
+        <div class="key black" data-note="C#"></div>
+        <div class="key white" data-note="D">
+          <span class="vertical-text">Mes compétences</span>
+        </div>
+        <div class="key black" data-note="D#"></div>
+        <div class="key white" data-note="E">
+          <span class="vertical-text">Mes projets</span>
+        </div>
+        <div class="key white" data-note="F">
+          <span class="vertical-text">Contact</span>
+        </div>
+        <div class="key black" data-note="F#"></div>
+        <div class="key white" data-note="G">
+          <span class="vertical-text">Mon parcours</span>
+        </div>
+        <div class="key black" data-note="G#"></div>
+        <div class="key white" data-note="A"></div>
+        <div class="key black" data-note="A#"></div>
+        <div class="key white" data-note="B"></div>
+        <div class="key white" data-note="C2"></div>
+      </div>
+    </div>
+
+    <audio id="audio"></audio>
+    <script src="./script.js"></script>
+  </body>
+</html>
